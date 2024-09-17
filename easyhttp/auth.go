@@ -24,16 +24,23 @@ type TokenResponse struct {
 }
 
 func GenerateOAuthBearerToken(url, clientId, clientSecret string) (string, error) {
+	return generateOAuthBearerToken(url, clientId, clientSecret, nil)
+}
+
+func generateOAuthBearerToken(url, clientId, clientSecret string, easyClient EasyHttpClient) (string, error) {
 	payload := TokenRequest{
 		GrantType:    "client_credentials",
 		ClientID:     clientId,
 		ClientSecret: clientSecret,
 	}
-	resp, err := Default().Post(api.RequestBody{URL: url, Payload: payload})
+	if easyClient == nil {
+		easyClient = Default()
+	}
+	resp, err := easyClient.Post(api.RequestBody{URL: url, Payload: payload})
 	if err != nil {
 		return "", err
 	}
-	if resp.StatusCode >= 200 && resp.StatusCode < 300 {
+	if !(resp.StatusCode >= 200 && resp.StatusCode < 300) {
 		return "", fmt.Errorf("Error: response status code %v with message %v", resp.StatusCode, string(resp.Content))
 	}
 	var tokenObj TokenResponse
