@@ -62,7 +62,12 @@ func (c *EasyHttp) doRequestWithCustomHeaders(method, url string, data interface
 		return api.EmptyResponseBody, err
 	}
 
-	req, err := http.NewRequest(method, url, payload)
+	var req *http.Request
+	if data != nil {
+		req, err = http.NewRequest(method, url, payload)
+	} else {
+		req, err = http.NewRequest(method, url, nil)
+	}
 	if err != nil {
 		return api.EmptyResponseBody, err
 	}
