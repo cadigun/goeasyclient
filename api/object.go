@@ -8,8 +8,8 @@ type ResponseBody struct {
 	Content    []byte
 }
 
-type RequestBody[T any] struct {
+type RequestBody struct {
 	Headers map[string]string
 	URL     string
-	Payload T
+	Payload interface{}
 }

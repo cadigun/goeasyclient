@@ -26,27 +26,27 @@ func New() *EasyHttp {
 	return &EasyHttp{httpClient: &http.Client{}}
 }
 
-func (c *EasyHttp) Post(requestbody api.RequestBody[any]) (api.ResponseBody, error) {
+func (c *EasyHttp) Post(requestbody api.RequestBody) (api.ResponseBody, error) {
 	return c.doRequestWithCustomHeaders("POST", requestbody.URL, requestbody.Payload, requestbody.Headers)
 }
 
-func (c *EasyHttp) Put(requestbody api.RequestBody[any]) (api.ResponseBody, error) {
+func (c *EasyHttp) Put(requestbody api.RequestBody) (api.ResponseBody, error) {
 	return c.doRequestWithCustomHeaders("PUT", requestbody.URL, requestbody.Payload, requestbody.Headers)
 }
 
-func (c *EasyHttp) Patch(requestbody api.RequestBody[any]) (api.ResponseBody, error) {
+func (c *EasyHttp) Patch(requestbody api.RequestBody) (api.ResponseBody, error) {
 	return c.doRequestWithCustomHeaders("PATCH", requestbody.URL, requestbody.Payload, requestbody.Headers)
 }
 
-func (c *EasyHttp) Delete(requestbody api.RequestBody[any]) (api.ResponseBody, error) {
+func (c *EasyHttp) Delete(requestbody api.RequestBody) (api.ResponseBody, error) {
 	return c.doRequestWithCustomHeaders("DELETE", requestbody.URL, requestbody.Payload, requestbody.Headers)
 }
 
-func (c *EasyHttp) Get(requestbody api.RequestBody[any]) (api.ResponseBody, error) {
+func (c *EasyHttp) Get(requestbody api.RequestBody) (api.ResponseBody, error) {
 	return c.doRequestWithCustomHeaders("GET", requestbody.URL, requestbody.Payload, requestbody.Headers)
 }
 
-func (c *EasyHttp) Do(method string, requestbody api.RequestBody[any]) (api.ResponseBody, error) {
+func (c *EasyHttp) Do(method string, requestbody api.RequestBody) (api.ResponseBody, error) {
 	return c.doRequestWithCustomHeaders(method, requestbody.URL, requestbody.Payload, requestbody.Headers)
 }
 

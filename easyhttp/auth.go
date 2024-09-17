@@ -29,7 +29,7 @@ func GenerateOAuthBearerToken(url, clientId, clientSecret string) (string, error
 		ClientID:     clientId,
 		ClientSecret: clientSecret,
 	}
-	resp, err := Default().Post(api.RequestBody[any]{URL: url, Payload: payload})
+	resp, err := Default().Post(api.RequestBody{URL: url, Payload: payload})
 	if err != nil {
 		return "", err
 	}
