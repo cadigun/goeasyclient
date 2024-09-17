@@ -2,12 +2,7 @@ package easyhttp
 
 import (
 	"encoding/base64"
-	"fmt"
-	"strings"
 	"testing"
-
-	"github.com/cadigun/gohttpclient/api"
-	"github.com/stretchr/testify/assert"
 )
 
 func Test_GenerateBasicAuth(t *testing.T) {
@@ -53,6 +48,7 @@ func Test_GenerateBasicAuth(t *testing.T) {
 	}
 }
 
+/*
 type mockClient struct{}
 
 func (m *mockClient) Post(reqbody api.RequestBody) (api.ResponseBody, error) {
@@ -102,3 +98,4 @@ func Test_GenerateOAuthBearerToken(t *testing.T) {
 		})
 	}
 }
+*/

@@ -1,7 +1,6 @@
 package easyhttp
 
 import (
-	"io"
 	"net/http"
 
 	"github.com/cadigun/gohttpclient/api"
@@ -82,16 +81,6 @@ func (c *EasyHttp) doRequestWithCustomHeaders(method, url string, data interface
 	if err != nil {
 		return api.EmptyResponseBody, err
 	}
-	defer response.Body.Close()
 
-	body, err := io.ReadAll(response.Body)
-	if err != nil {
-		return api.EmptyResponseBody, err
-	}
-	responseBody := api.ResponseBody{
-		StatusCode: response.StatusCode,
-		Content:    body,
-	}
-
-	return responseBody, nil
+	return api.ResourceToResponseBody(response), nil
 }
