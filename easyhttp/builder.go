@@ -1,6 +1,6 @@
 package easyhttp
 
-import "github.com/cadigun/gohttpclient/api"
+import "github.com/cadigun/goeasyclient/api"
 
 type EasyHttpBuilder struct {
 	easyHttpClient *EasyHttp

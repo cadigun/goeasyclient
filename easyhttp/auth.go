@@ -4,7 +4,7 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/cadigun/gohttpclient/api"
+	"github.com/cadigun/goeasyclient/api"
 )
 
 func GenerateBasicAuth(username, password string) string {

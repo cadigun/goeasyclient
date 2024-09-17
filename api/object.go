@@ -4,7 +4,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/cadigun/gohttpclient/util"
+	"github.com/cadigun/goeasyclient/util"
 )
 
 var EmptyResponseBody ResponseBody

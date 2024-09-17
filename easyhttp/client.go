@@ -3,8 +3,8 @@ package easyhttp
 import (
 	"net/http"
 
-	"github.com/cadigun/gohttpclient/api"
-	"github.com/cadigun/gohttpclient/util"
+	"github.com/cadigun/goeasyclient/api"
+	"github.com/cadigun/goeasyclient/util"
 )
 
 var easyhttpDefault = New()
