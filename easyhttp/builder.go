@@ -1,6 +1,10 @@
 package easyhttp
 
-import "github.com/cadigun/goeasyclient/api"
+import (
+	"net/http"
+
+	"github.com/cadigun/goeasyclient/api"
+)
 
 type EasyHttpBuilder struct {
 	easyHttpClient *EasyHttp
@@ -37,5 +41,13 @@ func (b *EasyHttpBuilder) Patch() (api.ResponseBody, error) {
 }
 
 func (b *EasyHttpBuilder) Get() (api.ResponseBody, error) {
-	return b.easyHttpClient.Patch(b.reqBody)
+	return b.easyHttpClient.Get(b.reqBody)
+}
+
+func (b *EasyHttpBuilder) Route(fn func() (*http.Response, error)) (api.ResponseBody, error) {
+	response, err := fn()
+	if err != nil {
+		return api.EmptyResponseBody, err
+	}
+	return api.ResourceToResponseBody(response), nil
 }
